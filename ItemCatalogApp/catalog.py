@@ -21,8 +21,6 @@ logging.basicConfig(stream=sys.stderr)
 
 app = Flask(__name__)
 app.secret_key = 'DunYbdwXfcdWd_NzzSX7vciP'
-#app.config['sqlite:///catalog.db'] = 'postgresql://catalog:release@localhost/catalog'
-#db = SQLAlchemy(app)
 csrf = SeaSurf(app)
 
 CLIENT_ID = json.loads(
