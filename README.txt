@@ -4,7 +4,7 @@ Project purpose is to setup a linux server and configure it to run the item cata
 
 Files in the repo are placed in /var/www/
 
-Below is the catalogApp.conf file in /etc/apache2/sites-available/
+Below are the contents of the the catalogApp.conf file in /etc/apache2/sites-available/
 
 <VirtualHost *:80>
                 ServerName 52.32.167.246
