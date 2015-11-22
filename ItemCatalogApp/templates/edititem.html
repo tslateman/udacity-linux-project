@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<div class = "row">
+		<div class="col-md-6">
+			<form action="{{ url_for('editItem',item_id = item.id)}}" method = 'post'>
+				<dt>Name:</dt>
+					<dd><input type ='text' size='30' name='name' placeholder = '{{item.name }}'></dd>
+				<dt>Description:</dt>
+					<dd><textarea name = 'description' rows='5' cols='40' placeholder = '{{item.description }}'></textarea></dd>
+				<dt>Image URL:</dt>
+					<dd><input type ='text' size='30' name='img_url' placeholder = 'Enter Image URL'></dd>
+			    <br>
+			    <select class="form-control" name='category'>
+			    	{% for row in catalog %}
+			      		<option value="{{row.id}}">{{row.category}}</option>
+			      	{% endfor %}
+				</select>
+			<input type='submit' value='Edit'>
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+			<a href = '{{url_for('showItem', item_id = item.id)}}'> Cancel </a>
+
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

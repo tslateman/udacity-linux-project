@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<div class ="row">
+		<div class = "col-md-12">	
+			<div class = 'flash'>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+				<ul>
+					{% for message in messages %}
+			  		<li><strong>{{message}}</strong></li>
+			  		{% endfor %}
+				</ul>
+				{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+
+	<div class = "row">
+		<div class="col-md-12">
+			<p><b>Name:</b> {{item.name}}</p>
+			<p><b>Description:</b> {{item.description}}</p>
+			<img src="{{item.img_url}}" alt="catalog item image"  height="240" width="300">
+			<br><br>
+			<a href = "{{url_for('editItem', item_id = item.id)}}"> <button>Edit</button></a>
+			<a href = "{{url_for('deleteItem', item_id = item.id)}}"> <button>Delete</button></a>
+			<a href = "{{url_for('showCategory', category_id = item.catalog_id)}}">Return to category</a>
+		</div>
+	</div>
+
+{% endblock %}

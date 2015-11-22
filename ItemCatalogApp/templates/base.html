@@ -1,0 +1,50 @@
+<html>
+
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='bootstrap.css')}}">
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+<div class="page-header">
+  	<div class="container">
+  		<div class="row-fluid">
+          <h1>Item Catalog App</h1>
+      	</div>
+      	<div class="col-md-6">
+			{% block title %}{{title}}{% endblock %}
+		</div>
+		<div class="col-md-4" align=right>
+  			{% if not username %}
+    		<button><a href="{{ url_for('showLogin') }}">log in</a></button>
+  			{% else %}
+    		<button><a href="{{ url_for('gdisconnect') }}">logout</a></button>
+			{% endif %}
+  		</div>
+  	</div>
+</div>
+<div class="container">
+	<div class ="row">
+		<div class = "col-md-12">	
+			<div class = 'flash'>
+				{% with messages = get_flashed_messages() %}
+				{% if messages %}
+
+				<ul>
+					{% for message in messages %}
+			  		<li><strong>{{message}}</strong></li>
+			  		{% endfor %}
+				</ul>
+				{% endif %}
+				{% endwith %}
+			</div>
+		</div>
+	</div>
+
+	{% block content %}
+	{% endblock %}
+
+</div>
+</body>
+
+</html>
